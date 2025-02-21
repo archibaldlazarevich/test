@@ -2,8 +2,8 @@ import factory
 import random
 
 
-from python_advanced.module_30_ci_linters.homework.hw1 import db
-from python_advanced.module_30_ci_linters.homework.hw1 import Client, Parking
+from src.app import db
+from src.models import Client, Parking
 
 class ClientFactory(factory.alchemy.SQLAlchemyModelFactory):
     class Meta:

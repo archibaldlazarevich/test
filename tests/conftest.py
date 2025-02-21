@@ -1,6 +1,6 @@
 import pytest
-from python_advanced.module_30_ci_linters.homework.hw1 import create_app, db as _db
-from python_advanced.module_30_ci_linters.homework.hw1 import Client, Parking, ClientParking
+from src.app import create_app, db as _db
+from src.models import Client, Parking, ClientParking
 from datetime import datetime
 
 
