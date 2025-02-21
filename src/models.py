@@ -1,5 +1,4 @@
 from typing import Any, Dict
-
 from .app import db, BaseModel
 
 
@@ -49,7 +48,7 @@ class Parking(BaseModel):
 
 class ClientParking(BaseModel):
     """Класс описывающий таблицу
-     для всех клиентов, пользующимися парковками"""
+    для всех клиентов, пользующимися парковками"""
 
     __tablename__ = "client_parking"
 
@@ -60,14 +59,15 @@ class ClientParking(BaseModel):
     time_out = db.Column(db.DateTime)
 
     __table_args__ = (
-        db.UniqueConstraint("client_id", "parking_id",
-                            name="unique_client_parking"),
+        db.UniqueConstraint("client_id", "parking_id", name="unique_client_parking"),
     )
 
     def __repr__(self):
         if self.time_out is None:
-            return (f"Клиент {self.client_id} припарковался"
-                    f" в паркинге {self.parking_id} в {self.time_in}")
+            return (
+                f"Клиент {self.client_id} припарковался"
+                f" в паркинге {self.parking_id} в {self.time_in}"
+            )
         else:
             return (
                 f"Клиент {self.client_id} припарковался "
