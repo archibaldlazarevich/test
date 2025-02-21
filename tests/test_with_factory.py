@@ -1,5 +1,5 @@
 from .factories import ParkingFactory, ClientFactory
-from scr.models import Parking, Client
+from ..scr.models import Parking, Client
 
 def test_create_client(app, db):
     _client = ClientFactory()
