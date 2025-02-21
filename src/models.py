@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from .app import db
+from .app import db, BaseModel
 
 
-class Client(db.Model):
+class Client(BaseModel):
     """Класс описывающий таблицу данных для клиента парковки"""
 
     __tablename__ = "client"
@@ -25,7 +25,7 @@ class Client(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class Parking(db.Model):
+class Parking(BaseModel):
     """Класс описывающий таблицу данных для всех доступных паркингов"""
 
     __tablname__ = "parking"
@@ -47,7 +47,7 @@ class Parking(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class ClientParking(db.Model):
+class ClientParking(BaseModel):
     """Класс описывающий таблицу
      для всех клиентов, пользующимися парковками"""
 
