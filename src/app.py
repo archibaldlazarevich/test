@@ -54,7 +54,10 @@ def create_app():
         car_number = request.form.get("car_number")
 
         new_client = Client(
-            name=name, surname=surname, credit_card=credit_card, car_number=car_number
+            name=name,
+            surname=surname,
+            credit_card=credit_card,
+            car_number=car_number,
         )
         db.session.add(new_client)
         db.session.commit()
@@ -98,7 +101,9 @@ def create_app():
                 f"Клиент с id {client_id} въехал на парковку {parking_id} "
                 f"в {time_in.strftime('%H:%M:%S')}"
             ), 201
-        return ("Данная парковка занята, " "клиент не смог припарковаться"), 404
+        return (
+            "Данная парковка занята, " "клиент не смог припарковаться"
+        ), 404
 
     @app.route("/client_parkings", methods=["DELETE"])
     def delete_client_parking():
@@ -112,7 +117,9 @@ def create_app():
         if check_client.credit_card is None:
             return ("У клиента не привязана" " карта для оплаты"), 404
 
-        check_client_parking: ClientParking = db.session.get(ClientParking, client_id)
+        check_client_parking: ClientParking = db.session.get(
+            ClientParking, client_id
+        )
         if check_client_parking.time_in > time_out:
             return ("Время выезда клиента меньше," " чем время заезда"), 404
         check_client_parking.time_out = time_out
