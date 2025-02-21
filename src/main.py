@@ -1,2 +1,5 @@
-def sum_two(a: int, b: int) -> int:
-    return a + b
+from .app import create_app
+
+if __name__ == "__main__":
+    app = create_app()
+    app.run()
