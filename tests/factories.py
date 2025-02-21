@@ -2,8 +2,8 @@ import factory
 import random
 
 
-from src.app import db
-from src.models import Client, Parking
+from ..src.app import db
+from ..src.models import Client, Parking
 
 class ClientFactory(factory.alchemy.SQLAlchemyModelFactory):
     class Meta:
