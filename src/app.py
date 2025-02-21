@@ -7,6 +7,7 @@ from flask_sqlalchemy.model import DefaultMeta
 
 db: SQLAlchemy = SQLAlchemy()
 
+
 class BaseModel(db.Model, metaclass=DefaultMeta):  # type: ignore
     __abstract__ = True
 
