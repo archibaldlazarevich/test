@@ -3,8 +3,12 @@ from typing import List
 
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy.model import DefaultMeta
 
-db = SQLAlchemy()
+db : SQLAlchemy = SQLAlchemy()
+
+class BaseModel(db.Model, metaclass=DefaultMeta): # type: ignore
+    __abstract__ = True
 
 
 def create_app():
