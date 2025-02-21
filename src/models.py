@@ -1,5 +1,6 @@
 from typing import Any, Dict
-from .app import db, BaseModel
+
+from .app import BaseModel, db
 
 
 class Client(BaseModel):
