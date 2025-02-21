@@ -1,9 +1,9 @@
 from typing import Any, Dict
 
-from .app import db
+from .app import BaseModel, db
 
 
-class Client(db.Model):
+class Client(BaseModel):
     """Класс описывающий таблицу данных для клиента парковки"""
 
     __tablename__ = "client"
@@ -25,7 +25,7 @@ class Client(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class Parking(db.Model):
+class Parking(BaseModel):
     """Класс описывающий таблицу данных для всех доступных паркингов"""
 
     __tablname__ = "parking"
@@ -47,9 +47,9 @@ class Parking(db.Model):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
-class ClientParking(db.Model):
+class ClientParking(BaseModel):
     """Класс описывающий таблицу
-     для всех клиентов, пользующимися парковками"""
+    для всех клиентов, пользующимися парковками"""
 
     __tablename__ = "client_parking"
 
@@ -60,14 +60,17 @@ class ClientParking(db.Model):
     time_out = db.Column(db.DateTime)
 
     __table_args__ = (
-        db.UniqueConstraint("client_id", "parking_id",
-                            name="unique_client_parking"),
+        db.UniqueConstraint(
+            "client_id", "parking_id", name="unique_client_parking"
+        ),
     )
 
     def __repr__(self):
         if self.time_out is None:
-            return (f"Клиент {self.client_id} припарковался"
-                    f" в паркинге {self.parking_id} в {self.time_in}")
+            return (
+                f"Клиент {self.client_id} припарковался"
+                f" в паркинге {self.parking_id} в {self.time_in}"
+            )
         else:
             return (
                 f"Клиент {self.client_id} припарковался "
