@@ -33,15 +33,20 @@ jobs:
     - name: Lint with flake8
       run: |
         flake8 src/
+      working-directory: .github/workflows
     - name: Lint with mypy
       run: |
         mypy src/
+      working-directory: .github/workflows
     - name: Lint with black
       run: |
         black --diff --check src/
+      working-directory: .github/workflows
     - name: Lint with isort
       run: |
         isort --check-only -- diff src/
+      working-directory: .github/workflows
     - name: Lint with pytest
       run: |
         pytest tests
+      working-directory: .github/workflows
