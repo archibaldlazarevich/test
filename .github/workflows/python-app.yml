@@ -35,7 +35,7 @@ jobs:
         mypy src/
     - name: Lint with black
       run: |
-        black --diff --check src/
+        black --diff --check --line-length 79 src/
     - name: Lint with isort
       run: |
         isort --check-only -- diff src/
